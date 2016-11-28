@@ -1,0 +1,23 @@
+I) Introduction:
+
+This project is a student grading system. In this database, we store details of students, Instructors, course details,
+exams conducted and student scores in an exam, department details. 
+This database is helpful to store complete student scores and retrieve data based on user criteria.
+
+ii) Functions system can perform:
+
+This database perform like retrieving data of all the students, courses registered by the students,
+scores obtained by student in each course, courses taught by instructors, all departments details.
+
+iii) End Users:
+The end users for this data base will be the university staff, students  who has the access to the data base to retrieve their details
+
+iv)  How will data obsolescence be handled?
+
+Here in this database, we have students who will be graduating, student will be changing in a course for every semester,
+instructor may be change the course he teaches. So, database will be updated each semester 
+
+v) Idea from:
+
+we got this idea during the mid Grades we got for each subject.
+We thought this topic would be good for the project since it is used in most cases.
