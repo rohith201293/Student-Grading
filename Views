@@ -1,0 +1,26 @@
+
+# Views:
+  1) Student can view courses taught by instructor
+CREATE VIEW coursesbyinstructor 
+ AS 
+ SELECT     instructor.instructorname, 
+            instructor.instructor#, 
+            offerings.course#, 
+            course.coursename 
+ FROM       instructor 
+ JOIN       offerings 
+ ON         instructor.instructor# = offerings.instructor# 
+ JOIN       course 
+ ON         offerings.course# = course.course#; 
+
+2) Students and instructor can view the number of subjects each student has registered.
+CREATE VIEW numberofcourses 
+AS 
+SELECT      student.sname                
+AS          "studentname", 
+Count       (studentcourse.course#) 
+AS          "courses registered" 
+FROM         studentcourse 
+JOIN         student 
+ON           student.studentid# = studentcourse.studentid# 
+GROUP  BY    student.sname; 
