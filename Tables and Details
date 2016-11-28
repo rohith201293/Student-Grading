@@ -1,0 +1,145 @@
+#DATA DICTIONARY:
+  
+  DEPARTMENT:
+Name	Null?	Type
+DEPT#	NOT NULL	Number(5)
+DEPTNAME	NOT NULL	Char(50)
+LOCATION	NOT NULL	Char(50)
+
+
+                 Primary key: DEPT#
+                 Privileges: Select privilege to students
+                                   Select privilege to instructor
+	         Select, Update, Insert, Delete, Alter privileges to database administrator
+ 
+ 
+INSTRUCTOR:
+Name	Null?	Type
+INSTRUCTOR#	NOT NULL	NUMBER(5)
+INSTRUCTORNAME	NOT NULL	CHAR(20)
+ADDRESS	NOT NULL	VARCHAR2(50)
+PHONE	NOT NULL	NUMBER(10)
+EMAIL	NOT NULL	VARCHAR2(20)
+DEPT#		NUMBER(5)
+                  
+
+
+                  Primary key: InstructorIID		
+                  Foreign key: Dept#
+                  Privileges: 	Select privilege to student 
+	Select privilege to Instructor
+	            Select,Update, Insert, Delete, Alter privileges to database administrator
+                   Indexes: Secondary BTree on instructor# 
+
+
+
+
+STUDENT:
+Name	Null?	Type
+STUDENTID#	NOT NULL	NUMBER(8)
+SNAME		CHAR(15)
+ADDRESS		VARCHAR2(50)
+PHONE		NUMBER(10)
+EMAIL		VARCHAR2(20)
+DEPT#		NUMBER(5)
+DEGREE#		NUMBER(5)
+    
+                    Primary key: studentid#
+                    Foreign key: depart#, degree#
+                    
+                  Privileges: Select privilege to students
+                                   Select , Update, Insert privilege to instructor
+	         Select, Update, Insert, Delete, Alter privileges to database administrator
+                    Indexes: Secondary BTree on studentID. 
+                                   Hashing on studentID
+                                   degree_student on degree#(secondary BTree)
+
+
+DEGREE:
+Name	Null?	Type
+DEGREE#	NOT NULL	NUMBER(5)
+DEGREENAME		CHAR(30)
+DEPT#		NUMBER(5)
+
+                     Primary key: Degree#
+                     Foreign key: dept#
+                     Privileges: Select privilege to students
+                                      Select privilege to instructor
+	            Select,Update, Insert, Delete, Alter privileges to database administrator
+
+
+
+
+COURSE:
+NAME	NULL?	TYPE
+COURSE#	NOT NULL	NUMBER(5)
+COURSENAME		CHAR(35)
+DEGREE#		NUMBER(5)
+
+                   Primary key: course#
+                   Foreign key: degree#
+                   Privileges: Select privilege to students
+                                      Select privilege to instructor
+	            Select,Update, Insert, Delete, Alter privileges to database administrator
+                   Indexes: Secondary BTree on course#.
+                                 Hashing on courseName
+                                  degree_course on degree#(secondary BTree)
+                                 
+OFFERINGS:
+NAME	NULL?	TYPE
+NUMBEROFOFFER#		NUMBER(1)
+INSTRUCTOR#		NUMBER(5)
+COURSE#		NUMBER(5)
+
+                   Foreign key: instructor#, course#
+                   Privileges: Select privilege to students
+                                      Select,Update, Insert privilege to instructor
+	            Select,Update, Insert, Delete, Alter privileges to database administrator
+                    Indexes: Instructor_offerings on offerings(instructor#);
+                                   course#_offerings on offerings(course#);
+
+
+
+
+
+EXAMS:
+NAME	NULL?	TYPE
+EXAM#	NOT NULL	NUMBER(5)
+EXAMNAME		CHAR(8)
+COURSE#		NUMBER(5)
+
+             Primary key: exam#
+             Foreign key: course#
+             Privileges: Select privilege to students
+                                      Select,Update, Insert privilege to instructor
+	            Select,Update, Insert, Delete, Alter privileges to database administrator
+
+
+STUDENTEXAM:
+NAME	NULL?	TYPE
+EXAM#	NOT NULL	NUMBER(5)
+STUDENTID#	NOT NULL	NUMBER(8)
+EXAMMARKS		NUMBER(3)
+SEMESTER		VARCHAR2(10)
+
+                Primary key: (exam#, studentid#)
+                Privileges: Select privilege to students
+                                      Select ,Update, Insert privilege to instructor
+	            Select,Update, Insert, Delete, Alter privileges to database administrator
+                Index: studentID#_student on studentID#(secondary BTree)
+
+
+STUDENTCOURSE:
+NAME	NULL?	TYPE
+STUDENTID#		NUMBER(8)
+COURSE#		NUMBER(5)
+
+                 Foreign keys: studentid#, course#
+                 
+
+               Privileges: Select privilege to students
+                                      Select privilege to instructor
+	            Select,Update, Insert, Delete, Alter privileges to database administrator
+                Index: studentID_studentCourse on studentID#(Secondary BTree)
+                             course_studentCourse on course#(secondary BTree)
+                             course#_studentCourse on course#(secondary BTree)
