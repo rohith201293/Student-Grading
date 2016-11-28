@@ -1,0 +1,59 @@
+#Retrieve the courses taught by instructor. 
+ 
+ SELECT instructor.instructorname, 
+       instructor.instructor#, 
+       offerings.course#, 
+       course.coursename 
+FROM   instructor 
+JOIN   offerings 
+ON     instructor.instructor# = offerings.instructor# 
+JOIN   course 
+ON     offerings.course# = course.course# 
+ 
+ Indexes:
+Instructor_offerings on offerings(instructor#);
+course#_offerings on offerings(course#);
+Secondary BTrees on Instructor# on Instructors table.
+Secondary BTress on course# on course. 
+
+Retrieving the courses that are registered by the students. 
+SELECT student.sname, 
+       student.studentid#, 
+       course.coursename 
+FROM   student 
+       JOIN studentcourse 
+         ON student.studentid# = studentcourse.studentid# 
+       JOIN course 
+         ON studentcourse.course# = course.course# 
+WHERE  student.studentid = 5461; 
+
+Indexes:
+Secondary BTree on studentid# of student
+Secondary Btree on course# of course
+Hashing on studentid# of studenttable
+studentid_studentcourse on studentcourse(studentid#)
+course_studentcourse on studentcourse(course#)
+
+Retrieving the students marks of a particular course.
+SELECT student.sname, 
+       studentexam.exammarks, 
+       course.coursename, 
+       exams.examname 
+FROM   student 
+       JOIN studentexam 
+         ON student.studentid# = studentexam.studentid# 
+       JOIN course 
+         ON studentdegree# = course.degree# 
+       JOIN studentcourse 
+         ON studentcourse.studentid# = student.studentid 
+            AND studentcourse.course# = course.course# 
+       JOIN exams 
+         ON exams.course# = course.course# 
+            AND course.coursename = 'sound sonic'; 
+Indexes:
+Hashing on courseName of courseTable
+Secondary BTrees on studentid# of student table
+studentid#_student on studentExam(studentid#)
+degree_student on student(degree#)
+degree_course on course(degree#)
+course#_studentCourse on studentCourse(course#)
