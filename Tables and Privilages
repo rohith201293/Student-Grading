@@ -1,0 +1,10 @@
+# TABLES	            STUDENT(privileges)     INSTRUCTOR(privileges)	          DATABASE MANAGER(privileges)
+Department	          Select	                Select	                           Select, Update, Insert, Delete, Alter
+Instructor	          Select	                Select	                           Select, Update, Insert, Delete, Alter
+Student	              Select	                Select, Update, Insert	           Select, Update, Insert, Delete, Alter
+Degree	              Select	                Select	                           Select, Update, Insert, Delete, Alter
+Course	              Select	                Select	                           Select, Update, Insert, Delete, Alter
+Offerings   	        Select	                Select, Update, Insert	           Select, Update, Insert, Delete, Alter
+Exams       	        Select	                Select, Update, Insert	           Select, Update, Insert, Delete, Alter
+Student Exam	        Select	                Select, Update, Insert	           Select, Update, Insert, Delete, Alter
+Student Course	      Select	                Select	                            Select, Update, Insert, Delete, Alter
