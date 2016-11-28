@@ -1,0 +1,51 @@
+# Entity Relationship Design
+# i) Entities:
+1. Student(STUDENTID, STUDENTNAME, ADDRESS, PHONE, EMAIL):
+        This entity represents the students and holds the details of the students. STUDENTID is unique for every student.
+
+2. Instructor(INSTRUCTORID, INSTRUCTORNAME, ADDRESS, PHONE, EMAIL)
+        This entity represents the instructors and holds the details of a instructor. INSTRUCTORID is unique for every instructor. 
+
+3. Department(DEPARTMENT#, DEPARTMENTNAME, LOCATION, DEPARTMENTPHONE)
+         This entity represents the departments and holds the name, location, contact details of the department. DEPARTMENT# is unique for every department. 
+
+4. Degree(DEGREEID, DEGREENAME)
+          This entity represents the degree and holds the information like ID and name of a degree. DEGREEID and DEGREENAME are unique for every degree. 
+
+5. Course(COURSEID, COURSENAME)
+            This entity represents the course and holds the details like ID and name of a course. COURSEID and COURSENAME are unique for every course. 
+
+6. Exams(EXAMID, EXAMNAME)
+          This entity represents the exams and hold the ID and name details of a exam. EXAMID is unique for every exam. 
+
+7. Offerings(NUMOFOFFERINGS)
+         This entity holds the details of number of offerings given by instructor to a student. 
+
+# ii) Relationships:
+
+a) belongs relates Department to Student. It is a one to many relation. 
+          Description:  This relation describes that one department can have many students and many students can be in one department. 
+
+b) maintains relates Department to Instructor. It is a one to many relation.
+    Description: This relation describes that one department can have many instructors and many instructors can be in one department.
+
+c) takes relates Student to Degree. It is a many to one relation. 
+    Description: This relation describes many students can be in one degree and one degree can have many students. 
+
+d) handles relates Department to Degree. It has one to many relation. 
+    Description: This relation describes one department can have many degrees and many degrees can be in one department. 
+
+e) canoffer relates Instructor to Offerings. It has one to many relation.
+     Description: This relation describes one instructor can offer many offerings and many offerings are done by one instructor. 
+
+f) takes relates Student to Exams. It has many to many relation.
+    Description: This relation describes many students can write many exams and many exams are written by many students. 
+
+g) takes relates Student to Course. It has many to many relation.
+     Description: This relation describes many students can register for many courses and many courses are registered by many students. 
+
+h) consists Relates exams to Course. It has many to one relation. 
+     Description: many exams can be under one course and one course consists many exams. 
+
+i) canhave relates Offerings to Course. It has many to one relation. 
+   Description: Many offerings are under one course and one course can have many offerings. 
